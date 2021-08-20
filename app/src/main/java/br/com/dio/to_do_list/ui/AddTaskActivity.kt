@@ -1,5 +1,6 @@
 package br.com.dio.to_do_list.ui
 
+import android.app.Activity
 import android.os.Bundle
 import android.os.PersistableBundle
 import androidx.appcompat.app.AppCompatActivity
@@ -59,6 +60,9 @@ class AddTaskActivity : AppCompatActivity() {
                 hour = binding.tilHour.text
             )
             TaskDataSource.insertTask(task)
+
+            setResult(Activity.RESULT_OK)
+            finish()
         }
     }
 
