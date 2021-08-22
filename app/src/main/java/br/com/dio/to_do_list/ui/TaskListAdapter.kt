@@ -10,11 +10,10 @@ import br.com.dio.to_do_list.R
 import br.com.dio.to_do_list.databinding.ItemTaskBinding
 import br.com.dio.to_do_list.model.Task
 
-class TaskListAdapter : ListAdapter<Task, TaskListAdapter.TaskViewHolder>(DiffCallBack()) {
+class TaskListAdapter : ListAdapter<Task, TaskListAdapter.TaskViewHolder>(DiffCallback()) {
 
     var listenerEdit : (Task) -> Unit = {}
     var listenerDelete : (Task) -> Unit = {}
-
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TaskViewHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -26,11 +25,11 @@ class TaskListAdapter : ListAdapter<Task, TaskListAdapter.TaskViewHolder>(DiffCa
         holder.bind(getItem(position))
     }
 
-   inner class TaskViewHolder(
+    inner class TaskViewHolder(
         private val binding: ItemTaskBinding
-        ) : RecyclerView.ViewHolder(binding.root) {
+    ) : RecyclerView.ViewHolder(binding.root) {
 
-       fun bind(item: Task) {
+        fun bind(item: Task) {
             binding.tvTitle.text = item.title
             binding.tvDate.text = "${item.date} ${item.hour}"
             binding.ivMore.setOnClickListener {
@@ -51,13 +50,10 @@ class TaskListAdapter : ListAdapter<Task, TaskListAdapter.TaskViewHolder>(DiffCa
             }
             popupMenu.show()
         }
-
     }
 }
 
-class DiffCallBack : DiffUtil.ItemCallback<Task>() {
+class DiffCallback : DiffUtil.ItemCallback<Task>() {
     override fun areItemsTheSame(oldItem: Task, newItem: Task) = oldItem == newItem
     override fun areContentsTheSame(oldItem: Task, newItem: Task) = oldItem.id == newItem.id
-
-
 }
