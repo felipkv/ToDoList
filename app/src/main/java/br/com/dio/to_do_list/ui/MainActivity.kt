@@ -43,11 +43,14 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        if (requestCode == CREATE_NEW_TASK && resultCode == Activity.RESULT_OK)
+            updateList()
         super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == CREATE_NEW_TASK && resultCode == Activity.RESULT_OK) updateList()
     }
 
     private fun updateList() {
+        adapter.notifyDataSetChanged()
+        adapter.submitList(TaskDataSource.getList())
         val list = TaskDataSource.getList()
         binding.includeEmpty.emptyState.visibility = if (list.isEmpty()) View.VISIBLE
         else View.GONE

@@ -25,10 +25,10 @@ class AddTaskActivity : AppCompatActivity() {
 
         if (intent.hasExtra(TASK_ID)) {
             val taskId = intent.getIntExtra(TASK_ID, 0)
-            TaskDataSource.findById(taskId)?.let {
-                binding.tilTitle.text = it.title
-                binding.tilDate.text = it.date
-                binding.tilHour.text = it.hour
+            TaskDataSource.findById(taskId)?.let {  task ->
+                binding.tilTitle.text = task.title
+                binding.tilDate.text = task.date
+                binding.tilHour.text = task.hour
             }
         }
 
