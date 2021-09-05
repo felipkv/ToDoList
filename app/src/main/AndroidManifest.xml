@@ -18,7 +18,8 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".ui.AddTaskActivity" />
+        <activity android:name=".ui.AddTaskActivity"
+            android:configChanges="screenLayout|orientation|screenSize"/>
     </application>
 
 </manifest>
