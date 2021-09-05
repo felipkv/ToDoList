@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:fillViewport="true">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/toolbar"
@@ -48,24 +52,24 @@
 
     </com.google.android.material.textfield.TextInputLayout>
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/til_description"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/til_title"
-        app:layout_constraintStart_toStartOf="@id/guide_start"
-        app:layout_constraintEnd_toEndOf="@id/guide_end"
-        android:hint="@string/label_description"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_marginTop="30dp">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:inputType="textMultiLine"
-            android:layout_width="match_parent"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_description"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:lines="4"
-            android:gravity="top"/>
-    </com.google.android.material.textfield.TextInputLayout>
+            android:layout_marginTop="30dp"
+            android:hint="@string/label_description"
+            app:layout_constraintEnd_toEndOf="@id/guide_end"
+            app:layout_constraintStart_toStartOf="@id/guide_start"
+            app:layout_constraintTop_toBottomOf="@id/til_title">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="top"
+                android:inputType="textMultiLine"
+                android:lines="4" />
+        </com.google.android.material.textfield.TextInputLayout>
 
 
     <com.google.android.material.textfield.TextInputLayout
@@ -107,18 +111,21 @@
             android:inputType="none"/>
     </com.google.android.material.textfield.TextInputLayout>
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btn_cancel"
-        android:layout_width="0dp"
-        android:text="@string/label_cancel"
-        android:textAllCaps="false"
-        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@id/btn_new_task"
-        app:layout_constraintStart_toStartOf="@id/guide_start"
-        app:layout_constraintEnd_toEndOf="@id/guide_end" />
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_cancel"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/label_cancel"
+            android:textAllCaps="false"
+            app:layout_constraintBottom_toTopOf="@id/btn_new_task"
+            app:layout_constraintEnd_toEndOf="@id/guide_end"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="@id/guide_start"
+            app:layout_constraintTop_toBottomOf="@id/til_date"
+            app:layout_constraintVertical_bias="1.0" />
 
-    <com.google.android.material.button.MaterialButton
+        <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_new_task"
         app:layout_constraintStart_toStartOf="@id/guide_start"
         style="@style/Widget.MaterialComponents.Button"
@@ -130,4 +137,5 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
